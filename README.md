@@ -74,5 +74,5 @@ julia --project=. -e 'using Pkg; Pkg.test()'
 
 ## Licence
 
-MIT. A few small pieces are adapted from Makie.jl, PlotUtils.jl and ColorSchemes.jl (all MIT),
-and the bundled fonts carry their own licences; see [NOTICE.md](NOTICE.md).
+Mozilla Public License Version 2.0 (see [LICENSE](LICENSE)). Bundled fonts and adapted colour-scheme
+utilities carry their own notices in [NOTICE.md](NOTICE.md).

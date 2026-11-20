@@ -1,7 +1,7 @@
 name = "SqueroPlot"
 uuid = "06b7c1eb-d5d3-492b-8c0f-45d07f92670e"
 authors = ["PaperboatLab"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 Cairo = "159f3aea-2a34-519c-b102-8c37f9878175"

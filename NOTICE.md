@@ -1,6 +1,6 @@
 # Third-party notices
 
-SqueroPlot does not depend on Makie. It keeps Makie's user-facing API shape and adapts a few
+JulixPlot does not depend on Makie. It keeps Makie's user-facing API shape and adapts a few
 small pieces, each marked in the source:
 
 | Piece | Source | Licence | Where |

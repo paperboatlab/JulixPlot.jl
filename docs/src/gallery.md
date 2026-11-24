@@ -5,7 +5,7 @@ Each example saves a PNG next to this page.
 ## Lines, scatter, stem and stairs
 
 ```@example g
-using SqueroPlot
+using JulixPlot
 x = range(0, 4π; length = 120)
 fig = Figure(; size = (800, 300))
 ax = Axis(fig[1, 1]; title = "lines + scatter")

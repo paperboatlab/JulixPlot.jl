@@ -1,11 +1,11 @@
 using Documenter
-using SqueroPlot
+using JulixPlot
 
 makedocs(;
-    sitename = "SqueroPlot.jl",
-    modules = [SqueroPlot],
+    sitename = "JulixPlot.jl",
+    modules = [JulixPlot],
     format = Documenter.HTML(; prettyurls = get(ENV, "CI", "false") == "true", size_threshold = 400_000,
-        edit_link = nothing, repolink = "https://github.com/paperboatlab/SqueroPlot.jl"),
+        edit_link = nothing, repolink = "https://github.com/paperboatlab/JulixPlot.jl"),
     pages = [
         "Getting started" => "index.md",
         "Plot gallery" => "gallery.md",

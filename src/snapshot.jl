@@ -1,6 +1,6 @@
 # Snapshots: what a GUI keeps of a figure. A snapshot is rendered bytes plus metadata, so
 # changing the live figure later never changes an old snapshot, and a snapshot exports without
-# the figure. The application owns history; SqueroPlot only makes snapshots and artifacts.
+# the figure. The application owns history; JulixPlot only makes snapshots and artifacts.
 
 """
     Snapshot

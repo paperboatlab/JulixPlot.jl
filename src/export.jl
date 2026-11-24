@@ -151,7 +151,7 @@ function html_page(svg::String; title::AbstractString = "", interactive::Bool = 
     <html lang="en">
     <head>
     <meta charset="utf-8">
-    <meta name="generator" content="SqueroPlot">
+    <meta name="generator" content="JulixPlot">
     <title>$(isempty(t) ? "Figure" : t)</title>
     <style>
     html, body { margin: 0; background: #ffffff; }
@@ -177,7 +177,7 @@ double-click reset.
 """
 function to_html(fig::Figure; title = nothing, interactive::Bool = false)
     svg = String(render(fig; format = :svg))
-    return html_page(svg; title = something(title, SqueroPlot.title(fig)), interactive = interactive)
+    return html_page(svg; title = something(title, JulixPlot.title(fig)), interactive = interactive)
 end
 to_html(fap::FigureAxisPlot; kwargs...) = to_html(fap.figure; kwargs...)
 

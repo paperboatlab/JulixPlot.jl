@@ -1,7 +1,7 @@
 # Time to first figure and export timings. Run in a fresh process:
 #   julia --project=. examples/timings.jl
 t0 = time_ns()
-using SqueroPlot
+using JulixPlot
 t_using = (time_ns() - t0) / 1e9
 
 ms(t) = round(t * 1000; digits = 1)
@@ -15,7 +15,7 @@ t_first2d = (time_ns() - t1) / 1e9
 t1 = time_ns()
 render(surface_figure(); format = :png)
 t_first3d = (time_ns() - t1) / 1e9
-println("using SqueroPlot          ", ms(t_using), " ms")
+println("using JulixPlot          ", ms(t_using), " ms")
 println("cold first 2D figure PNG  ", ms(t_first2d), " ms   (time to first figure: ", ms(t_using + t_first2d), " ms)")
 println("cold first 3D figure PNG  ", ms(t_first3d), " ms")
 

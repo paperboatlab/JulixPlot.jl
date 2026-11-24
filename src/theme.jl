@@ -69,10 +69,10 @@ function theme_default()
 end
 
 """
-The Squero look: the default theme with a quieter frame (no top/right spines), lighter grid and
-a palette that matches Squero Studio.
+The Julix look: the default theme with a quieter frame (no top/right spines), lighter grid and
+a palette that matches Julix.
 """
-function theme_squero()
+function theme_julix()
     palette = RGBAf[to_color(c) for c in ("#2563EB", "#E5484D", "#10B981", "#F59E0B", "#8B5CF6", "#06B6D4", "#64748B")]
     return merge(theme_default(), Theme(
         fontsize = 13,

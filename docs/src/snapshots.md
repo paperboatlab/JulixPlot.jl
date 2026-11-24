@@ -1,6 +1,6 @@
 # GUI snapshots
 
-An application that shows figures (Squero Studio MX, a notebook, a board) keeps *snapshots*:
+An application that shows figures (Julix, a notebook, a board) keeps *snapshots*:
 rendered artifacts plus metadata. A snapshot never changes after it is taken, and it exports
 without the live figure, so a history of figures survives the session that made them.
 

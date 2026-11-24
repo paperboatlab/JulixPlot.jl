@@ -1,6 +1,6 @@
 # API
 
 ```@autodocs
-Modules = [SqueroPlot]
+Modules = [JulixPlot]
 Private = false
 ```

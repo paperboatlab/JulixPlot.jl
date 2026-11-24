@@ -1,6 +1,6 @@
 # Getting started
 
-SqueroPlot draws figures (2D and 3D axes, legends, colour bars, layouts) and writes them as PNG,
+JulixPlot draws figures (2D and 3D axes, legends, colour bars, layouts) and writes them as PNG,
 SVG, PDF, EPS and standalone HTML. Its API follows Makie's, so a Makie script reads the same, but
 it is a small package of its own: the renderer is Cairo, the fonts are bundled, and nothing
 needs a GPU or a display.
@@ -9,7 +9,7 @@ needs a GPU or a display.
 
 ```julia
 using Pkg
-Pkg.add(url = "https://github.com/paperboatlab/SqueroPlot.jl")   # or Pkg.develop(path = "SqueroPlot.jl")
+Pkg.add(url = "https://github.com/paperboatlab/JulixPlot.jl")   # or Pkg.develop(path = "JulixPlot.jl")
 ```
 
 Julia 1.11 or newer.
@@ -17,7 +17,7 @@ Julia 1.11 or newer.
 ## A first figure
 
 ```@example start
-using SqueroPlot
+using JulixPlot
 
 x = range(0, 2π; length = 60)
 
@@ -51,7 +51,7 @@ nothing # hide
 ## Themes
 
 ```julia
-set_theme!(theme_squero())          # the Squero look for new figures
+set_theme!(theme_julix())          # the Julix look for new figures
 with_theme(theme_dark()) do
     lines(1:10, rand(10))
 end
@@ -60,7 +60,7 @@ Figure(fontsize = 12)               # theme keys per figure
 
 ## Differences from Makie
 
-SqueroPlot is not a Makie backend and does not load Makie. It has no observables or interaction;
+JulixPlot is not a Makie backend and does not load Makie. It has no observables or interaction;
 a figure is drawn when it is saved, rendered or snapshotted. 3D views are orthographic
 (`perspectiveness` is accepted and ignored). Linear, `log10`, `log2`, `log` and `sqrt` scales
 are supported in 2D; 3D axes are linear.

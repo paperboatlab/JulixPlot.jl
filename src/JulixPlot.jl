@@ -1,15 +1,15 @@
 """
-    SqueroPlot
+    JulixPlot
 
 Figures, axes and plots for Julia, rendered with Cairo to PNG, SVG, PDF, EPS and standalone HTML.
 
 The API keeps Makie's shape (`Figure`, `Axis`, `Axis3`, `fig[i, j]`, `lines!`, `scatter!`,
-`surface!`, `Colorbar`, `Legend`, …) so a script reads the same, but SqueroPlot does not depend on
+`surface!`, `Colorbar`, `Legend`, …) so a script reads the same, but JulixPlot does not depend on
 Makie: it has its own figure model, layout and renderer. A few small pieces are adapted from
 Makie.jl and PlotUtils.jl (both MIT); see `NOTICE.md`.
 
 ```julia
-using SqueroPlot
+using JulixPlot
 
 x = range(0, 2π; length = 50)
 fig = Figure()
@@ -20,13 +20,14 @@ axislegend(ax)
 save("waves.svg", fig)
 ```
 """
-module SqueroPlot
+module JulixPlot
 
 import Cairo
 using Colors: Colors, Colorant, RGB, RGBA, @colorant_str, alpha, red, green, blue
 using FreeType2_jll: libfreetype
 using Printf: @sprintf
 using SHA: sha256
+using Base64: Base64, base64encode
 using PrecompileTools: @compile_workload, @setup_workload
 
 # The model
@@ -49,7 +50,7 @@ export linkaxes!, linkxaxes!, linkyaxes!, twinx, axislegend
 export colsize!, rowsize!, colgap!, rowgap!, Relative, Fixed, Auto, DataAspect, AxisAspect
 export WilkinsonTicks, LinearTicks
 export zoom!, pan!, rotate!, axes_layout
-export Theme, set_theme!, update_theme!, with_theme, theme_default, theme_squero, theme_dark
+export Theme, set_theme!, update_theme!, with_theme, theme_default, theme_julix, theme_dark
 export RGBf, RGBAf, RGB, RGBA, @colorant_str, Reverse, available_colormaps
 export NoShading, FastShading, rich, superscript, subscript
 
@@ -75,6 +76,7 @@ include("export.jl")
 include("snapshot.jl")
 include("interact.jl")
 include("scene.jl")
+include("figuremime.jl")
 include("precompile.jl")
 
 function __init__()

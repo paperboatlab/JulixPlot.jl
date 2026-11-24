@@ -1,8 +1,8 @@
 using Test
-using SqueroPlot
+using JulixPlot
 using Aqua
 
-const S = SqueroPlot
+const S = JulixPlot
 
 # --- helpers --------------------------------------------------------------------------------
 
@@ -68,7 +68,7 @@ end
 
 # --- the model -------------------------------------------------------------------------------
 
-@testset "SqueroPlot" begin
+@testset "JulixPlot" begin
 
 @testset "2D: lines, scatter, stem, stairs, bars" begin
     x = range(0, 2π; length = 40)
@@ -392,7 +392,7 @@ end
 end
 
 @testset "themes" begin
-    fig = with_theme(theme_squero()) do
+    fig = with_theme(theme_julix()) do
         Figure()
     end
     @test fig.theme[:fontsize] == 13
@@ -503,8 +503,25 @@ end
     @test [t["kind"] for t in cb_spec["layout"]["cols"]] == ["fr", "auto", "fr", "auto"]
 end
 
+@testset "the Paperboat figure MIME" begin
+    m = MIME"application/vnd.paperboat.figure+json"()
+    fig = Figure(; size = (400, 300))
+    ax = Axis(fig[1, 1]; title = "a \"quoted\" title")
+    lines!(ax, 1:200, sin.(1:200))
+    @test showable(m, fig)
+    s = repr(m, fig)
+    s isa AbstractVector{UInt8} && (s = String(s))
+    @test startswith(s, "{\"scene\":{") && endswith(s, "\"}")
+    @test occursin("\"buffers\":\"", s) && occursin("a \\\"quoted\\\" title", s)
+    _, bytes = scene_spec(fig)
+    b64 = match(r"\"buffers\":\"([^\"]*)\"", s)[1]
+    @test length(JulixPlot.Base64.base64decode(b64)) == length(bytes)
+    @test !occursin("NaN", s) && !occursin("Inf", s)
+    @test repr(m, lines(1:3, [1.0, NaN, 3.0])) isa Any   # a FigureAxisPlot shows itself too; NaN goes as null
+end
+
 @testset "Aqua" begin
-    Aqua.test_all(SqueroPlot; ambiguities = (recursive = false,), persistent_tasks = false)
+    Aqua.test_all(JulixPlot; ambiguities = (recursive = false,), persistent_tasks = false)
 end
 
 end
